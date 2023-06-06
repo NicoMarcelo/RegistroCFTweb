@@ -62,7 +62,7 @@ namespace RegistroCFTweb.Controllers
             promedio = 0;
             for(i = 0; i < Notas.Count() ; i++)
             {
-                promedio = promedio + (Notas[i].Calificacion * Notas[i].Ponderacion);
+                
             }
 
             var nota = await Notas.ToListAsync();
