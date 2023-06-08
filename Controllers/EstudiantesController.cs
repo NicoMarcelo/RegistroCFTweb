@@ -13,8 +13,8 @@ namespace RegistroCFTweb.Controllers
 
     {
         private readonly RegistroCftContext _context;
-        private int promedio;
-        private int i = 0;
+        //private int promedio;
+        //private int i = 0;
         
 
         public EstudiantesController(RegistroCftContext context)
@@ -59,11 +59,11 @@ namespace RegistroCFTweb.Controllers
             IQueryable<Notas> Notas = _context.Nota;
             Notas = Notas.Where(m => m.EstudianteId == id);
 
-            promedio = 0;
-            for(i = 0; i < Notas.Count() ; i++)
-            {
-                promedio = promedio + (Notas[i].Calificacion * Notas[i].Ponderacion);
-            }
+            //promedio = 0;
+            //for(i = 0; i < Notas.Count() ; i++)
+            //{
+                //promedio = promedio + (Notas[i].Calificacsion * Notas[i].Ponderacion);
+            //}
 
             var nota = await Notas.ToListAsync();
             if(nota == null)

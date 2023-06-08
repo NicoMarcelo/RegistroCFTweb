@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Promedio estudiante</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -28,6 +28,10 @@
         </tr>
     </thead>
     <tbody>
+        @{
+            double promedio = 0;
+
+        }
         @foreach (var item in Model)
         {
             <tr>
@@ -44,11 +48,17 @@
                     @Html.DisplayFor(modelItem => item.Estudiante.Id)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">Editar</a>
+
                 </td>
+                @{
+
+                    promedio = promedio + (((item.Calificacion * (item.Ponderacion / 100)))/10);
+                    
+                    promedio = Math.Round(promedio, 1);
+                }
             </tr>
         }
     </tbody>
+    <h1>Promedio = @promedio</h1>
 </table>
